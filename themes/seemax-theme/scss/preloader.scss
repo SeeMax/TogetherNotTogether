@@ -1,0 +1,95 @@
+@import "colors";
+
+#preloader {
+	position: fixed;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content:center;
+	align-items:center;
+	z-index: 999999999999999999999;
+	width: 100%;
+	height: 100%;
+	overflow: visible;
+	background:white;
+
+
+	svg {
+		height:auto;
+		width:100%;
+    max-width:650px;
+	}
+
+
+
+  #bottom-load {
+
+		animation:fade1 1.5s infinite;
+	}
+
+	#top-load {
+		animation:fade2 1.5s infinite;
+	}
+
+	#mid-load {
+		transform-origin:center center;
+		animation:rotate 1.5s infinite;
+	}
+
+}
+
+@keyframes fade1 {
+	0% {
+		opacity:0;
+	}
+
+	25% {
+		opacity:1;
+	}
+	50% {
+		opacity:0;
+	}
+	75% {
+		opacity:1;
+	}
+	100% {
+		opacity:0;
+	}
+}
+
+@keyframes fade2 {
+	0% {
+		opacity:1;
+	}
+	25% {
+		opacity:0;
+	}
+	50% {
+		opacity:1;
+	}
+	75% {
+		opacity:0;
+	}
+	100% {
+		opacity:1;
+	}
+}
+
+
+@keyframes rotate {
+	0% {
+		transform:rotate(0deg);
+	}
+	25% {
+		transform:rotate(90deg);
+	}
+	50% {
+		transform:rotate(180deg);
+	}
+	75% {
+		transform:rotate(270deg);
+	}
+	100% {
+		transform:rotate(360deg);
+	}
+}

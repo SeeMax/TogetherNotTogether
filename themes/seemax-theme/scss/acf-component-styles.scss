@@ -1,0 +1,51 @@
+.acf-field.both-borders {
+	border-top:1px solid #e2e4e7 !important;
+	border-bottom:1px solid #e2e4e7 !important;
+}
+
+.acf-field.top-borders {
+	border-top:1px solid #e2e4e7 !important;
+}
+
+.acf-field.bottom-borders {
+	border-bottom:1px solid #e2e4e7 !important;
+}
+
+.wp-block {
+	max-width:100% !important;
+}
+
+// [data-type="acf/blog-preview-section"] {
+// 	margin-bottom: 100px;
+// }
+
+.wp-admin {
+
+	a {
+		color:#2c2cb5;
+	}
+}
+
+#wpbody {
+	h1 {
+		text-align: left;
+	}
+
+	#title-prompt-text {
+		line-height: 1;
+	}
+
+	.categorychecklist {
+		margin-top:.5em;
+		margin-bottom:.5em;
+	}
+}
+
+.acf-fields {
+
+}
+
+
+.yoast.wpseo-metabox {
+	display: none;
+}

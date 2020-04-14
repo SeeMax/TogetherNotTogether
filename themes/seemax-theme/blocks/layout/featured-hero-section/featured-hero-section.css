@@ -1,0 +1,143 @@
+.hero-custom-section {
+  position: relative;
+  z-index: 10 !important; }
+  .hero-custom-section .content {
+    background: white;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    border-radius: 0 0 30px 30px;
+    padding-top: 50px;
+    padding-bottom: 50px; }
+  .hero-custom-section .slick-prev-arrow, .hero-custom-section .slick-next-arrow {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    height: 30px;
+    cursor: pointer;
+    opacity: 0.3;
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .3s ease; }
+    .hero-custom-section .slick-prev-arrow svg, .hero-custom-section .slick-next-arrow svg {
+      width: auto;
+      height: 100%;
+      fill: none;
+      stroke: #30A8B6;
+      stroke-width: 2;
+      stroke-miterlimit: 10; }
+    .hero-custom-section .slick-prev-arrow:hover, .hero-custom-section .slick-next-arrow:hover {
+      opacity: 1; }
+  .hero-custom-section .slick-next-arrow {
+    left: auto;
+    right: 0; }
+  .hero-custom-section .featured-hero-slider-container {
+    width: 100%;
+    height: auto; }
+  .hero-custom-section .slick-track {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-line-pack: center;
+        align-content: center; }
+  .hero-custom-section .single-featured-hero-slide {
+    width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -ms-flex-line-pack: center;
+        align-content: center; }
+  .hero-custom-section .featured-hero-vid-container {
+    height: 0;
+    width: 60%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding-top: calc( 56.25% / 5 * 3);
+    background: white;
+    position: relative; }
+    .hero-custom-section .featured-hero-vid-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%; }
+  .hero-custom-section .featured-hero-text-half h3 {
+    font-weight: 100; }
+  .hero-custom-section .featured-hero-text-half .seemax-button {
+    display: inline-block; }
+  .hero-custom-section .featured-hero-image-half {
+    padding-right: 60px; }
+    .hero-custom-section .featured-hero-image-half img {
+      width: 100%;
+      max-width: 100%;
+      margin-bottom: 0;
+      height: auto; }
+  .hero-custom-section .single-event-location-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    text-align: right; }
+    .hero-custom-section .single-event-location-logo img {
+      height: 100%;
+      width: auto; }
+  .hero-custom-section .el-salvador-event-preview .chicago-event-icon {
+    display: none; }
+  .hero-custom-section .chicago-event-preview .chicago-event-icon {
+    display: block; }
+  .hero-custom-section .chicago-event-preview .el-salvador-event-icon {
+    display: none; }
+
+.page-template-page-chicago .hero-custom-section .slick-prev-arrow svg, .page-template-page-chicago .hero-custom-section .slick-next-arrow svg, .chicago-page-style .hero-custom-section .slick-prev-arrow svg, .chicago-page-style .hero-custom-section .slick-next-arrow svg {
+  stroke: #C11717; }
+
+.page-template-page-chicago .hero-custom-section h2, .chicago-page-style .hero-custom-section h2 {
+  color: #540505; }
+
+.page-template-page-chicago .hero-custom-section h3, .page-template-page-chicago .hero-custom-section h4, .chicago-page-style .hero-custom-section h3, .chicago-page-style .hero-custom-section h4 {
+  color: #C11717; }
+
+.page-template-page-chicago .hero-custom-section .seemax-button, .chicago-page-style .hero-custom-section .seemax-button {
+  margin-top: 26px;
+  font-size: 14px;
+  padding: 8px 16px;
+  background: #C11717; }
+  .page-template-page-chicago .hero-custom-section .seemax-button:hover, .chicago-page-style .hero-custom-section .seemax-button:hover {
+    background: #7F0B0B; }
+    .page-template-page-chicago .hero-custom-section .seemax-button:hover:before, .chicago-page-style .hero-custom-section .seemax-button:hover:before {
+      background: #C11717; }
+
+.post-sub-hero-section {
+  z-index: 9;
+  margin-top: 0px !important; }
+  .post-sub-hero-section .colored-back {
+    -webkit-transform: translateY(-100px);
+            transform: translateY(-100px);
+    height: calc(100% + 100px); }
+
+@media screen and (max-width: 1024px) {
+  .hero-custom-section {
+    width: calc(100% - 20px);
+    margin-left: 10px; }
+    .hero-custom-section .featured-hero-image-half {
+      padding-right: 40px; } }
+
+@media screen and (max-width: 767px) {
+  .hero-custom-section {
+    width: calc(100% - 20px);
+    margin-left: 10px; }
+    .hero-custom-section .featured-hero-image-half {
+      padding-right: 0px; }
+      .hero-custom-section .featured-hero-image-half img {
+        margin-bottom: 20px; }
+    .hero-custom-section .featured-hero-vid-container {
+      width: 100%;
+      padding-top: 56.25%; } }

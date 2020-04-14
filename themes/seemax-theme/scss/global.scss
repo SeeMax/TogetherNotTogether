@@ -1,0 +1,200 @@
+@import "colors";
+
+html, body {
+	height:100%;
+	width:100%;
+}
+
+body {
+	font:200 15px/1.4 'Wotfard', sans-serif;
+	color:black;
+	position: relative;
+}
+
+.wrapper {
+	width:100%;
+	min-height: 100%;
+	margin:0 auto;
+	overflow: hidden;
+}
+
+main {
+	padding-top:100px;
+	position: relative;
+	min-height: 100%;
+	width:100%;
+}
+
+section {
+	position: relative;
+	width:100%;
+	height:auto;
+}
+
+.content {
+	position: relative;
+	display:flex;
+	flex-wrap:wrap;
+	width:100%;
+	height:auto;
+	max-width: 1200px;
+	margin:0px auto;
+	padding:70px 50px 90px 50px;
+}
+
+.no-flex {
+
+	.content {
+		display:block;
+		overflow: auto;
+	}
+}
+
+a {
+	color:$yellow;
+	text-decoration:none;
+	letter-spacing: 1;
+}
+
+h1, h2, h3, h4, h5 {
+	font-family: 'Argesta', serif;
+	line-height: 1.25;
+	font-weight:100;
+	margin:0;
+	width:100%;
+}
+
+h1 {
+	font-weight:100;
+	font-size:60px;
+}
+
+h2 {
+	font-size:54px;
+	font-style:italic;
+}
+
+h3 {
+	font-size:24px;
+}
+
+h4 {
+	font-size:20px;
+}
+
+h5 {
+	font-size:1em;
+}
+
+p {
+	width:100%;
+}
+
+ul {
+
+	li {
+		position: relative;
+	}
+}
+
+hr {
+	background: black;
+	margin:0;
+	text-align: left;
+	border:0;
+	width:60px;
+	height: 1px;
+}
+
+.seemax-button {
+	font-family: 'Montserrat', sans-serif;
+	position: relative;
+	text-transform: uppercase;
+	background-color: pink;
+	font-weight: 400;
+	color:white;
+	padding:10px 25px;
+	transition:all .25s ease-out;
+	box-shadow: 0px 3px 2px 0px rgba(0,0,0,0.0);
+
+	a {
+		color:white;
+		transition:color .25s ease-out;
+	}
+
+	&:hover {
+		background-color: red;
+		box-shadow: 0px 3px 8px -2px rgba(0,0,0,0.25);
+
+		a {
+
+		}
+	}
+}
+
+
+.background-image-section {
+	background: no-repeat center center;
+  background-size: cover;
+}
+
+.custom-pagination {
+	background: white;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width:100%;
+	text-align: center;
+	padding:0px 20px;
+
+	.page-numbers {
+		margin:0px;
+		padding:5px 10px;
+		color:red;
+		border-bottom:2px solid gray;
+	}
+
+	.current {
+		border-bottom:2px solid red;
+		margin:40px 0px;
+	}
+
+	.next, .prev  {
+		background: red;
+		padding:5px 20px;
+		margin:10px;
+		color:white;
+		border-bottom:0px solid red;
+	}
+}
+
+
+// 1024px And Below
+@media screen and (max-width: 1024px){
+
+	h1 {
+
+	}
+
+	h2 {
+
+	}
+
+	h3 {
+
+	}
+}
+
+// 767px And Below
+@media screen and (max-width: 767px){
+
+	.content {
+		padding-left:25px;
+		padding-right:25px;
+	}
+
+	h2 {
+		font-size:46px;
+	}
+}

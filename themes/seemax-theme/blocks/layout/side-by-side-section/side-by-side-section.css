@@ -1,0 +1,64 @@
+.side-by-side-section {
+  min-height: 450px; }
+  .side-by-side-section .colored-back {
+    background: red; }
+  .side-by-side-section .side-by-side-text {
+    padding-right: 26px;
+    padding-left: 50px; }
+  .side-by-side-section .side-by-side-image {
+    margin-top: 0;
+    position: relative; }
+  .side-by-side-section .side-x-side-carousel {
+    width: 100%;
+    height: auto; }
+    .side-by-side-section .side-x-side-carousel .slick-track {
+      width: 100%;
+      display: -webkit-box;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-box-align: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -ms-flex-line-pack: center;
+          align-content: center; }
+    .side-by-side-section .side-x-side-carousel img {
+      width: 100%; }
+  .side-by-side-section .slick-prev-arrow, .side-by-side-section .slick-next-arrow {
+    position: absolute;
+    top: calc(50% - 20px);
+    left: 10px;
+    height: 40px;
+    cursor: pointer;
+    opacity: 0.25;
+    -webkit-transition: opacity .3s ease;
+    transition: opacity .3s ease;
+    z-index: 10; }
+    .side-by-side-section .slick-prev-arrow svg, .side-by-side-section .slick-next-arrow svg {
+      width: auto;
+      height: 100%;
+      fill: none;
+      stroke: white;
+      stroke-width: 3;
+      stroke-miterlimit: 10; }
+    .side-by-side-section .slick-prev-arrow:hover, .side-by-side-section .slick-next-arrow:hover {
+      opacity: 1; }
+  .side-by-side-section .slick-next-arrow {
+    left: auto;
+    right: 10px; }
+
+@media screen and (max-width: 1024px) {
+  .side-by-side-section .side-by-side-text {
+    padding-left: 0px; }
+  .side-by-side-section .side-by-side-image {
+    padding-right: 0px; } }
+
+@media screen and (max-width: 767px) {
+  .side-by-side-section .content {
+    padding-top: 40px; }
+  .side-by-side-section .side-by-side-text {
+    padding-left: 0px;
+    padding-right: 0px; }
+  .side-by-side-section .side-by-side-image {
+    margin-top: 40px;
+    padding-left: 0px;
+    padding-right: 0px; } }

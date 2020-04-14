@@ -1,0 +1,10 @@
+.news-preview-section h2 {
+  text-align: center; }
+
+.news-preview-section .all-news-button-area {
+  width: 100%;
+  height: auto;
+  text-align: center;
+  margin-top: 50px; }
+  .news-preview-section .all-news-button-area .seemax-button {
+    display: inline-block; }

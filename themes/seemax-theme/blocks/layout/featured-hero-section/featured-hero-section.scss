@@ -1,0 +1,223 @@
+$black:#000000;$white:#FFFFFF;$gray:#4a5155;$offWhite:#f2f3f4;$teal1:#0A3A4B;$teal2:#30A8B6;$teal3:#6BCAD5;$teal4:#B5EAF1;$yellow1:#EED446;$purple1:#8B3057;$purple2:#ED1558;$purple3:#ff6091;$purple4:#ffe5ec;$blue1:#003556;$blue2:#64C3FF;$blue3:#afe0ff;$blue4:#e4f4fd;$red1:#540505;$red2:#7F0B0B;$red3:#C11717;$red4:#E51C20;$red5:#FFDDDE;
+
+.hero-custom-section {
+  position: relative;
+  z-index:10 !important;
+
+  .content {
+    background: white;
+    justify-content: center;
+    border-radius:0 0 30px 30px;
+    padding-top:50px;
+    padding-bottom:50px;
+  }
+
+  .slick-prev-arrow, .slick-next-arrow {
+    position: absolute;
+    top:50%;
+    left:0;
+    height:30px;
+    cursor:pointer;
+    opacity:0.3;
+    transition:opacity .3s ease;
+
+    svg {
+      width:auto;
+      height:100%;
+      fill:none;
+      stroke:$teal2;
+      stroke-width:2;
+      stroke-miterlimit:10;
+    }
+
+    &:hover {
+      opacity:1;
+    }
+  }
+
+  .slick-next-arrow {
+    left:auto;
+    right:0;
+  }
+
+  .featured-hero-slider-container {
+    width:100%;
+    height:auto;
+  }
+
+  .slick-track {
+    display: flex;
+    align-items: center;
+    align-content: center;
+  }
+
+  .single-featured-hero-slide {
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    align-content: center;
+  }
+
+  .featured-hero-vid-container {
+    height: 0;
+    width:60%;
+    margin:0 auto;
+    overflow: hidden;
+    padding-top:calc( 56.25% / 5 * 3);
+    background: white;
+    position: relative;
+
+    iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .featured-hero-text-half {
+
+    h4 {
+
+    }
+
+    h3 {
+      font-weight:100;
+    }
+
+    h2 {
+
+    }
+
+    .seemax-button {
+      display: inline-block;
+    }
+  }
+
+  .featured-hero-image-half {
+    padding-right:60px;
+
+    img {
+      width:100%;
+      max-width: 100%;
+      margin-bottom: 0;
+      height:auto;
+    }
+  }
+
+  .single-event-location-logo {
+    position: absolute;
+    top:0;
+    left:0;
+    width:100%;
+    height:50px;
+    text-align: right;
+
+    img {
+      height:100%;
+      width:auto;
+    }
+  }
+
+  .el-salvador-event-preview {
+
+    .chicago-event-icon {
+      display: none;
+    }
+  }
+
+  .chicago-event-preview {
+
+    .chicago-event-icon {
+      display: block;
+    }
+
+    .el-salvador-event-icon {
+      display: none;
+    }
+  }
+}
+
+.page-template-page-chicago, .chicago-page-style {
+
+  .hero-custom-section {
+
+    .slick-prev-arrow, .slick-next-arrow {
+
+      svg {
+        stroke:$red3;
+      }
+    }
+
+    h2 {
+      color:$red1;
+    }
+
+    h3,h4 {
+      color:$red3;
+    }
+
+    .seemax-button {
+      margin-top:26px;
+      font-size: 14px;
+      padding:8px 16px;
+      background:$red3;
+
+      &:hover {
+        background: $red2;
+
+        &:before {
+          background:$red3;
+        }
+      }
+    }
+  }
+}
+
+// This is class is Added Via JS to the following section if there is a featured hero section
+.post-sub-hero-section {
+  z-index:9;
+  margin-top:0px !important;
+
+  .colored-back {
+    transform: translateY(-100px);
+    height:calc(100% + 100px);
+  }
+}
+
+
+// 1024px And Below
+@media screen and (max-width: 1024px){
+
+  .hero-custom-section {
+    width: calc(100% - 20px);
+    margin-left: 10px;
+
+    .featured-hero-image-half {
+      padding-right:40px;
+    }
+  }
+}
+
+// 767px And Below
+@media screen and (max-width: 767px){
+
+  .hero-custom-section {
+    width: calc(100% - 20px);
+    margin-left: 10px;
+
+    .featured-hero-image-half {
+      padding-right:0px;
+
+      img {
+        margin-bottom: 20px;
+      }
+    }
+    .featured-hero-vid-container {
+      width:100%;
+      padding-top:56.25%;
+    }
+  }
+}

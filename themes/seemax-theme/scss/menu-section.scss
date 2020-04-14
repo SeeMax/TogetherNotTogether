@@ -1,0 +1,250 @@
+@import "colors";
+
+.menu-section {
+  position: fixed;
+	top:0;
+	right:0;
+  transform:translateX(101%);
+	height:100vh;
+	width:100%;
+	box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.05);
+  background:$yellow;
+  background: linear-gradient(90deg, $yellow 0%, $yellow2 50%);
+	z-index:100;
+  overflow:scroll;
+
+  .content {
+    // height:100vh;
+    padding-top:100px;
+    justify-content: flex-start;
+    margin-left: 0;
+    // overflow:scroll;
+  }
+
+  .menu-section-toggle {
+    width:100%;
+    padding-right:calc(50% + 50px);
+    color:white;
+    transform:translateX(101%);
+  }
+
+  .about-toggle, .nominate-toggle {
+    position: relative;
+    display: inline-flex;
+    color:white;
+    cursor:pointer;
+  }
+
+  .nominate-toggle {
+    opacity:0.5;
+  }
+}
+
+.sub-menu-area {
+  position: relative;
+  width:50%;
+  height:auto;
+  min-height:100vh;
+  display: flex;
+  flex-wrap:wrap;
+  align-items: flex-start;
+  align-content: flex-start;
+  padding-right:75px;
+  z-index:101;
+}
+
+.about-area {
+  margin-bottom: 100px;
+
+  p, .about-email-button-area, h2, .about-single-link {
+    transform:translateX(120%);
+    opacity:0;
+  }
+
+  .about-email-button-area {
+    margin-top:6px;
+    width:100%;
+  }
+
+  .about-email-button {
+    position: relative;
+    display:inline-block;
+    padding:8px 28px;
+    background: white;
+    border:1px solid $yellow3;
+    font-family: 'Argesta', serif;
+    font-weight:400;
+    font-style: italic;
+    transition:all .3s ease;
+    box-shadow: inset 0px 0px 5px 0px white;
+
+    &:hover {
+      box-shadow: inset 0px 0px 5px 0px $yellow2;
+    }
+
+    position: relative;
+  }
+
+
+  .about-links {
+    width:100%;
+    height:auto;
+    margin-top:60px;
+  }
+
+  h2 {
+    color:white;
+    position: relative;
+    margin-bottom:6px;
+
+    // &:after {
+    //   content:"";
+    //   position: absolute;
+    //   left:0;
+    //   bottom:-8px;
+    //   width:20px;
+    //   height:1px;
+    //   background: white;
+    //   opacity:0.8;
+    // }
+  }
+
+  .link-list {
+    flex-direction: column;
+    display:flex;
+    flex-wrap:wrap;
+    // justify-content: center;
+    align-items:flex-start;
+    align-items:content;
+    height:auto;
+    width:100%;
+  }
+
+  .about-single-link {
+    font-family: 'Argesta', serif;
+    font-style: italic;
+    position: relative;
+    font-size:1.3em;
+    margin-left:0px;
+    width:auto;
+    margin-top:10px;
+    transition: none;
+
+    &:after {
+      content: "";
+      background-image: url("/wp-content/themes/seemax-theme/img/link-arrow.svg");
+      background-repeat: no-repeat;
+      position: absolute;
+      top:10px;
+      left:calc(100% + 8px);
+      width:12px;
+      height:12px;
+
+    }
+  }
+}
+
+.nominate-form {
+  margin-bottom: 100px;
+  transform:translateX(-100%);
+  z-index: 1;
+
+  p {
+    transform: translateX(121%);
+    opacity:0;
+    // color:white;
+    // font-weight: 400;
+  }
+
+  div.wpcf7-response-output {
+    margin-left:0;
+    max-wdith:100%;
+    width:100%;
+  }
+
+  label {
+    font-weight:100;
+    font-family: 'Argesta', serif;
+    color:black;
+  }
+
+  .wpcf7-form-control-wrap {
+    display: block;
+    margin-top:5px;
+  }
+
+  .wpcf7 {
+    width:100%;
+
+    * {
+      max-width:100%;
+    }
+  }
+
+  .wpcf7, input {
+    font-weight:200;
+
+    .ajax-loader {
+      display: none !important;     
+    }
+  }
+
+
+  form {
+    width:100%;
+    transform: translateX(75px);
+  }
+
+  input, input:focus, textarea, textarea:focus {
+    font-family: 'Argesta', serif;
+    font-weight:200;
+    padding:8px;
+    border:1px solid white;
+    outline:none;
+    border-radius:0;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    opacity:1;
+    font-weight:400;
+    font-style: italic;
+  }
+
+
+  input:focus, textarea:focus {
+    border-color:#f6f6f6;
+  }
+
+  input[type=submit] {
+    padding:8px 28px;
+    background: white;
+    font-weight:200;
+    // font-style:normal;
+    color:black;
+    cursor:pointer;
+    transition:all .3s ease;
+    border-color:$yellow3;
+    box-shadow: inset 0px 0px 5px 0px white;
+
+    &:hover {
+      box-shadow: inset 0px 0px 5px 0px $yellow2;
+    }
+  }
+}
+
+
+
+
+// 1024px And Below
+@media screen and (max-width: 1024px){
+
+  .menu-section {
+    width:200%;
+  }
+}
+
+
+// 767px And Below
+@media screen and (max-width: 767px){
+
+}
