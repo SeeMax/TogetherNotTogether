@@ -20,9 +20,9 @@ const creativeTitleSplit = () => {
     y:10,
     rotationY:0,
     rotationX:0,
-    // Once this is all setup enable the hover aniamtion in person-hover.js
+    // Once this is all setup enable the hover aniamtion in creative-hover.js
     onComplete: function() {
-      newHover();
+      creativeNameAnimation();
     }
   });
 
@@ -33,11 +33,14 @@ const creativeTitleSplit = () => {
     rotation:-5,
   });
 }
-creativeTitleSplit();
+// Only Load On Desktop
+if($(window).width() >= 1024) {
+  creativeTitleSplit();
 
-// Reset Text On Window Resize
-window.addEventListener('resize', function(){
-  new SplitText($('.plainName')).revert();
-  new SplitText($('.hoveredName')).revert();
-  newHover();
-});
+  // Reset Text On Window Resize
+  window.addEventListener('resize', function(){
+    new SplitText($('.plainName')).revert();
+    new SplitText($('.hoveredName')).revert();
+    creativeNameAnimation();
+  });
+}

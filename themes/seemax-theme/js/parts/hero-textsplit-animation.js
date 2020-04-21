@@ -10,13 +10,15 @@ const heroFlyout = () => {
   let logoBottomLetter = document.querySelector(".logoBottomLetter");
   let logoTopLetter = document.querySelector(".logoTopLetter");
   let logoLine = document.querySelector(".logoLine");
+  let allCreative = $(".single-creative-title").not(this);
   let theHeight = $('.hero-section').height() + 100;
   let tl = gsap.timeline({
     paused:true,
     defaults:{
-      ease: 'power0.none',
-      ease: Back.easeOut.config(0.2),
-      duration:0.65,
+      // ease: 'power0.none',
+      // ease: Back.easeOut.config(0.2),
+      ease: 'power4.out',
+      duration:0.9,
     }
   });
 
@@ -36,16 +38,23 @@ const heroFlyout = () => {
     tl.to($(this), {x:charX, y:charY, scale:charZ, opacity:0}, "doIt")
   });
 
-
-  tl.set($('.hero-section'), {zIndex:0}, "doIt");
-  tl.set($('.hero-section').find('.content'), {zIndex:0}, "doIt");
-  tl.to(backStroke, {rotation:180, width:0}, "doIt");
+  if($(window).width() >= 1024) {
+    tl.set($('.hero-section'), {zIndex:0}, "doIt");
+    tl.set($('.hero-section').find('.content'), {zIndex:0}, "doIt");
+    tl.to(backStroke, {rotation:180, width:0}, "doIt");
+  }
+  else {
+    tl.to(backStroke, {rotation:180, width:0, onComplete:function(){
+        gsap.set($('.hero-section'), {zIndex:0});
+        gsap.set($('.hero-section').find('.content'), {zIndex:0});
+      }
+  }, "doIt");
+  }
   tl.to(logoLine, {scale:1, rotation:0, opacity:1}, "doIt");
   tl.to(logoTopLetter, {x:0, opacity:1}, "doIt");
   tl.to(logoBottomLetter, {x:0,opacity:1}, "doIt");
   // tl.set($('.hero-section'), {opacity:0, immediateRender:false}, "doIt");
   tl.to($('.hero-section'), {duration:0.0000001, opacity:0});
-
 
   let visiblity = 'invisible';
 
@@ -84,10 +93,4 @@ const heroFlyout = () => {
 
   // Start observing .box
   io.observe(box);
-
-
-  // Just necessary for displaying the current status
-  // function updateStatus(visiblity) {
-  //   console.log(visiblity);
-  // }
 }

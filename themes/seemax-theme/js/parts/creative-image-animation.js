@@ -14,7 +14,10 @@ const setImage = () => {
     perspective:1000,
   });
 }
-setImage();
+// Only Load on Desktop
+if($(window).width() >= 1024) {
+  setImage();
+}
 
 let loadImage = (thisCreative) => {
   let thisID = ($(thisCreative).data('post'));

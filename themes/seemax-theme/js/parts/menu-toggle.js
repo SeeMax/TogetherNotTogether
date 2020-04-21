@@ -1,9 +1,12 @@
-$(document.body).on('click', function() {
-  let masterTL = new gsap.timeline();
- 		masterTL.add(closeAbout(), "nomItUp");
- 		masterTL.add(closeMenu(), "nomItUp");
-    masterTL.add(closeNom(), "nomItUp");
-});
+if($(window).width() >= 1024) {
+  // Close The Menu On Any Click that isn't part of the Menu
+  $(document.body).on('click', function() {
+    let masterTL = new gsap.timeline();
+      masterTL.add(closeAbout(), "nomItUp");
+      masterTL.add(closeMenu(), "nomItUp");
+      masterTL.add(closeNom(), "nomItUp");
+  });
+}
 
 $('.openNominate').on('click', function(e) {
   e.stopPropagation();
@@ -12,7 +15,6 @@ $('.openNominate').on('click', function(e) {
   masterTL.add(openNom(), "nomItUp");
   masterTL.set($('.aboutToggle'), {opacity:0.5}, "nomItUp");
 });
-
 
 $('.menuSection').on('click', function(e) {
   e.stopPropagation();
@@ -101,14 +103,14 @@ const closeMenu = () => {
 	let	hHam3 = $(".hovHamBot");
 	let h2 = $('.menuSectionToggle');
   let yellowSpans = $('.sub-spans');
+  let header = $('.header');
 	let uniTime = 0.3;
 	let uniEase = Back.easeIn.config(0.5);
 	let uniEase2 = Back.easeOut.config(0.5);
 
 	$(toggle).removeClass("menuOpen");
-  //enable
+
   $(".wrapper").enableScroll();
-	// tl.set($(".wrapper"), {height:"auto",overflow:"visible"});
 	tl.to(menu, {duration:uniTime, x:"101%", ease:uniEase}, "menuClose+=0.1");
   tl.to(yellowSpans, {duration:uniTime, opacity:1, ease:uniEase}, "menuClose+=0.1");
 	tl.to(h2, {duration:uniTime, x:"101%", opacity:0, ease:uniEase}, "menuClose");
@@ -118,7 +120,6 @@ const closeMenu = () => {
   tl.to(hHam1, {duration:uniTime/2, rotation:0, y:0, ease:uniEase}, "menuClose");
 	tl.to(hHam2, {duration:uniTime/2, x:0, ease:uniEase}, "menuClose");
 	tl.to(hHam3, {duration:uniTime/2, rotation:0, y:0, ease:uniEase}, "menuClose");
-  // tl.set([hHam1, hHam2, hHam3], {width:0});
 
 	return tl;
 }
@@ -135,15 +136,16 @@ const openMenu = () => {
 	let hHam2 = $(".hovHamMid");
 	let	hHam3 = $(".hovHamBot");
 	let h2 = $('.menuSectionToggle');
+  let header = $('.header');
   let yellowSpans = $('.sub-spans');
 	let uniTime = 0.3;
 	let uniEase = Back.easeIn.config(0.5);
 	let uniEase2 = Back.easeOut.config(0.5);
 
 	$(toggle).addClass("menuOpen");
+
   $(".wrapper").disableScroll();
-	// tl.to($(".wrapper"), {duration:uniTime, ease:uniEase2, height:"100%", overflow:"hidden"}, "menuOpen");
-	tl.to(menu, {duration:uniTime, x:"50%", ease: uniEase}, "menuOpen");
+  tl.to(menu, {duration:uniTime, x:"50%", ease: uniEase}, "menuOpen");
   tl.to(yellowSpans, {duration:uniTime, opacity:0, ease: uniEase}, "menuOpen");
 	tl.to(h2, {duration:uniTime, x:"0%", opacity:1, ease: uniEase2}, "menuOpen+=0.15");
 	tl.to(ham1, {duration:uniTime, rotation:405, y:2, width:10, ease: uniEase2}, "menuOpen");

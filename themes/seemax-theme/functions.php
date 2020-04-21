@@ -355,7 +355,7 @@ function remove_menus(){
     // if (!in_array($current_user->ID, array(1))) {
 
     remove_menu_page( 'edit.php' );                  //Posts
-    remove_menu_page( 'edit.php?post_type=page' );    //Pages
+    // remove_menu_page( 'edit.php?post_type=page' );    //Pages
     remove_menu_page( 'edit.php?post_type=ai1wm_export' );    //Pages
     remove_menu_page( 'index.php' );                  //Dashboard
     // remove_menu_page( 'jetpack' );                    //Jetpack*

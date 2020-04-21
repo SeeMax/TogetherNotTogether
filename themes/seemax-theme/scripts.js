@@ -1,8 +1,8 @@
-function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
-
 (function ($, root, undefined) {
   $(function () {
     'use strict';
+
+    var _this = this;
 
     var closeAbout = function closeAbout() {
       var tl = new gsap.timeline();
@@ -188,9 +188,48 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         aboutSplit();
       });
-    };
+    }; // Only do the hover stuff if it's desk top
 
-    aboutSplitSetup();
+
+    if ($(window).width() >= 1024) {
+      aboutSplitSetup();
+    }
+
+    var creativeNameAnimation = function creativeNameAnimation() {
+      // Only Load on Desktop
+      if ($(window).width() >= 1024) {
+        $(".single-creative-title").each(function (i, el) {
+          // Add Various Timelines from other js files | Use el for this
+          var masterTL = new gsap.timeline({
+            paused: true
+          });
+          var t = masterTL;
+          masterTL.add(loadImage(el), 'getcreative+=0.1');
+          masterTL.add(loadDetails(el), 'getcreative+=0.1');
+          masterTL.add(loadLetters(el), 'getcreative'); // Create A Variable for each timeline
+
+          el.animation = t; // Control The Specific Timeline for Each Hovered Element
+
+          $(this).on("mouseenter", function () {
+            if ($('.menuToggle').hasClass("menuOpen")) {
+              $('.single-creative-title').find('a').hide();
+              return false;
+            } else {
+              this.animation.play();
+            }
+          }).on("mouseleave", function () {
+            if ($('.menuToggle').hasClass("menuOpen")) {
+              $('.single-creative-title').find('a').show();
+              return false;
+            } else {
+              this.animation.reverse();
+            }
+          }).on("click", function () {
+            this.animation.reverse();
+          });
+        });
+      }
+    };
 
     var setImage = function setImage() {
       var allPics = $(".creative-images-area");
@@ -205,9 +244,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       gsap.set(allPics, {
         perspective: 1000
       });
-    };
+    }; // Only Load on Desktop
 
-    setImage();
+
+    if ($(window).width() >= 1024) {
+      setImage();
+    }
 
     var loadImage = function loadImage(thisCreative) {
       var thisID = $(thisCreative).data('post');
@@ -238,9 +280,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         opacity: 0,
         rotationX: -5
       });
-    };
+    }; // Only Load on Desktop
 
-    setDetails();
+
+    if ($(window).width() >= 1024) {
+      setDetails();
+    }
 
     var loadDetails = function loadDetails(thisCreativeDeets) {
       var thisID = $(thisCreativeDeets).data('post');
@@ -253,101 +298,113 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           ease: "back.in(0.1)",
           transformOrigin: "50% 100% 0",
           duration: 0.3,
-          scale: 1,
           opacity: 1,
-          x: 0,
-          y: 0,
           rotationX: 0
         }
       });
       tl.to([title, name, advice], {});
       return tl;
-    }; // $( ".featured-hero-section" ).next().addClass( "post-sub-hero-section" );
-    // const heroFlyout = () => {
-    //
-    //   const observerOptions = {
-    //     root: null,
-    //     rootMargin: '0px 0px',
-    //     threshold: 0,
-    //   };
-    //
-    //   const observerElements = document.querySelectorAll('.hero-section');
-    //   observerElements.forEach(el => {
-    //
-    //     let headChars = $(el).find($('.heroChars'));
-    //     let bodyWords = $(el).find($('.heroWords'));
-    //     let hBody = $(el).find($('.heroBody'));
-    //     let backStroke = $(el).find($('.backStroke'));
-    //     let logoAll = document.querySelector(".logoAll");
-    //     let logoBottomHalf = document.querySelector(".logoBottomHalf");
-    //     let logoTopHalf = document.querySelector(".logoTopHalf");
-    //     let logoBottomLetter = document.querySelector(".logoBottomLetter");
-    //     let logoTopLetter = document.querySelector(".logoTopLetter");
-    //     let logoLine = document.querySelector(".logoLine");
-    //     let theHeight = $('.hero-section').height() + 100;
-    //     el.tl = gsap.timeline({paused: true});
-    //
-    //     $(headChars).each(function(i) {
-    //       let charX =  $(this).attr('datax');
-    //       let charY =  $(this).attr('datay');
-    //       let charZ =  $(this).attr('dataZ');
-    //
-    //       el.tl.to($(this), {x:charX, y:charY, scale:charZ, opacity:0, ease: 'power1.inOut'}, "doIt")
-    //     });
-    //
-    //     $(bodyWords).each(function(i) {
-    //       let charX =  $(this).attr('datax');
-    //       let charY =  $(this).attr('datay');
-    //       let charZ =  $(this).attr('dataZ');
-    //
-    //       el.tl.to($(this), {x:charX, y:charY, scale:charZ, opacity:0, ease: 'power1.inOut'}, "doIt")
-    //     });
-    //
-    //
-    //     el.tl.set($('.hero-section').find('.content'), {zIndex:0}, "doIt");
-    //     el.tl.to(backStroke, {rotation:180, width:0}, "doIt");
-    //     el.tl.to(logoLine, {scale:1, rotation:0, opacity:1}, "doIt");
-    //     el.tl.to(logoTopLetter, {x:0, opacity:1}, "doIt");
-    //     el.tl.to(logoBottomLetter, {x:0,opacity:1}, "doIt");
-    //     el.tl.to($('.hero-section'), {opacity:0});
-    //
-    //
-    //
-    //     el.observer = new IntersectionObserver(entry => {
-    //       if (entry[0].intersectionRatio > 0) {
-    //         gsap.ticker.add(el.progressTween)
-    //       } else {
-    //         gsap.ticker.remove(el.progressTween)
-    //       }
-    //     }, observerOptions);
-    //
-    //     el.progressTween = () => {
-    //       // Get scroll distance to bottom of viewport.
-    //       const scrollPosition = (window.scrollY + (window.innerHeight - theHeight + 20));
-    //       // Get element's position relative to bottom of viewport.
-    //       const elPosition = (scrollPosition - el.offsetTop);
-    //       // Set desired duration.
-    //       const durationDistance = ((window.innerHeight/1.5 - theHeight) + el.offsetHeight -20);
-    //       // Calculate tween progresss.
-    //       const currentProgress = (elPosition / durationDistance);
-    //       // Set progress of gsap timeline.
-    //       el.tl.progress(currentProgress);
-    //     }
-    //
-    //     el.observer.observe(el);
-    //   });
-    // };
-    //
-    //
-    // // Reset Text On Window Resize
-    // // window.addEventListener('resize', function(){
-    // //   heroFlyout();
-    // // });
+    };
+
+    var loadLetters = function loadLetters(thisOne) {
+      var pChars = $(thisOne).find('.pChars');
+      var hChars = $(thisOne).find('.hChars');
+      var arrow = $(thisOne).find('.websiteArrow');
+      var tl = new gsap.timeline({});
+      var uTime = 0.2;
+      tl.to(pChars, {
+        duration: uTime,
+        ease: "back.out(0.1)",
+        transformOrigin: "50% 50% -30",
+        opacity: 0,
+        scale: 0,
+        x: -10,
+        y: 0,
+        rotationY: -40,
+        rotationX: -120,
+        stagger: {
+          amount: uTime // ease:"back.out(0.1)",
+          // ease: "power2.inOut"
+
+        }
+      }, "rollIt").to(hChars, {
+        duration: uTime,
+        ease: "back.out(0.1)",
+        opacity: 1,
+        x: 55,
+        y: 0,
+        rotationY: 0,
+        rotationX: 0,
+        stagger: {
+          amount: uTime // ease:"back.out(0.1)",
+          // ease: "power2.inOut"
+
+        }
+      }, "rollIt").to(arrow, {
+        duration: uTime,
+        transformOrigin: "0% 100%",
+        ease: "back.out(0.1)",
+        opacity: 1,
+        x: 55,
+        y: 0,
+        rotation: 0
+      }, "-=0.1");
+      return tl;
+    };
+
+    var creativeTitleSplit = function creativeTitleSplit() {
+      var pSplit = new SplitText($('.plainName'), {
+        type: "words,chars"
+      });
+      var hSplit = new SplitText($('.hoveredName'), {
+        type: "words,chars"
+      });
+      var pWords = pSplit.words;
+      var hWords = hSplit.words;
+      var pChars = pSplit.chars;
+      var hChars = hSplit.chars;
+      $(hWords).addClass('hWords');
+      $(pWords).addClass('pWords');
+      $(hChars).addClass('hChars');
+      $(pChars).addClass('pChars');
+      gsap.set(pWords, {
+        perspective: 100
+      });
+      gsap.set(hWords, {
+        perspective: 100
+      });
+      gsap.set(hChars, {
+        opacity: 0,
+        x: -10,
+        y: 10,
+        rotationY: 0,
+        rotationX: 0,
+        // Once this is all setup enable the hover aniamtion in creative-hover.js
+        onComplete: function onComplete() {
+          creativeNameAnimation();
+        }
+      });
+      gsap.set($(".websiteArrow"), {
+        opacity: 0,
+        x: 40,
+        y: 0,
+        rotation: -5
+      });
+    }; // Only Load On Desktop
+
+
+    if ($(window).width() >= 1024) {
+      creativeTitleSplit(); // Reset Text On Window Resize
+
+      window.addEventListener('resize', function () {
+        new SplitText($('.plainName')).revert();
+        new SplitText($('.hoveredName')).revert();
+        creativeNameAnimation();
+      });
+    } // $( ".featured-hero-section" ).next().addClass( "post-sub-hero-section" );
 
 
     var heroFlyout = function heroFlyout() {
-      var _defaults;
-
       var headChars = document.querySelectorAll('.heroChars');
       var bodyWords = document.querySelectorAll('.heroWords');
       var hBody = document.querySelector('.heroBody');
@@ -358,12 +415,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var logoBottomLetter = document.querySelector(".logoBottomLetter");
       var logoTopLetter = document.querySelector(".logoTopLetter");
       var logoLine = document.querySelector(".logoLine");
+      var allCreative = $(".single-creative-title").not(_this);
       var theHeight = $('.hero-section').height() + 100;
       var tl = gsap.timeline({
         paused: true,
-        defaults: (_defaults = {
-          ease: 'power0.none'
-        }, _defineProperty(_defaults, "ease", Back.easeOut.config(0.2)), _defineProperty(_defaults, "duration", 0.65), _defaults)
+        defaults: {
+          // ease: 'power0.none',
+          // ease: Back.easeOut.config(0.2),
+          ease: 'power4.out',
+          duration: 0.9
+        }
       });
       $(headChars).each(function (i) {
         var charX = $(this).attr('datax');
@@ -387,16 +448,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           opacity: 0
         }, "doIt");
       });
-      tl.set($('.hero-section'), {
-        zIndex: 0
-      }, "doIt");
-      tl.set($('.hero-section').find('.content'), {
-        zIndex: 0
-      }, "doIt");
-      tl.to(backStroke, {
-        rotation: 180,
-        width: 0
-      }, "doIt");
+
+      if ($(window).width() >= 1024) {
+        tl.set($('.hero-section'), {
+          zIndex: 0
+        }, "doIt");
+        tl.set($('.hero-section').find('.content'), {
+          zIndex: 0
+        }, "doIt");
+        tl.to(backStroke, {
+          rotation: 180,
+          width: 0
+        }, "doIt");
+      } else {
+        tl.to(backStroke, {
+          rotation: 180,
+          width: 0,
+          onComplete: function onComplete() {
+            gsap.set($('.hero-section'), {
+              zIndex: 0
+            });
+            gsap.set($('.hero-section').find('.content'), {
+              zIndex: 0
+            });
+          }
+        }, "doIt");
+      }
+
       tl.to(logoLine, {
         scale: 1,
         rotation: 0,
@@ -442,10 +520,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var box = document.querySelector('.creative-list-area'); // Start observing .box
 
-      io.observe(box); // Just necessary for displaying the current status
-      // function updateStatus(visiblity) {
-      //   console.log(visiblity);
-      // }
+      io.observe(box);
     };
 
     var splitHero = function splitHero() {
@@ -514,18 +589,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     };
 
-    splitHero(); // // Reset Text On Window Resize
-    // window.addEventListener('resize', function(){
-    //   new SplitText($('.heroHeadline')).revert();
-    //   new SplitText($('.heroBody')).revert();
-    // });
+    splitHero();
 
-    $(document.body).on('click', function () {
-      var masterTL = new gsap.timeline();
-      masterTL.add(closeAbout(), "nomItUp");
-      masterTL.add(closeMenu(), "nomItUp");
-      masterTL.add(closeNom(), "nomItUp");
-    });
+    if ($(window).width() >= 1024) {
+      // Close The Menu On Any Click that isn't part of the Menu
+      $(document.body).on('click', function () {
+        var masterTL = new gsap.timeline();
+        masterTL.add(closeAbout(), "nomItUp");
+        masterTL.add(closeMenu(), "nomItUp");
+        masterTL.add(closeNom(), "nomItUp");
+      });
+    }
+
     $('.openNominate').on('click', function (e) {
       e.stopPropagation();
       var masterTL = new gsap.timeline();
@@ -614,13 +689,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var hHam3 = $(".hovHamBot");
       var h2 = $('.menuSectionToggle');
       var yellowSpans = $('.sub-spans');
+      var header = $('.header');
       var uniTime = 0.3;
       var uniEase = Back.easeIn.config(0.5);
       var uniEase2 = Back.easeOut.config(0.5);
-      $(toggle).removeClass("menuOpen"); //enable
-
-      $(".wrapper").enableScroll(); // tl.set($(".wrapper"), {height:"auto",overflow:"visible"});
-
+      $(toggle).removeClass("menuOpen");
+      $(".wrapper").enableScroll();
       tl.to(menu, {
         duration: uniTime,
         x: "101%",
@@ -673,8 +747,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         rotation: 0,
         y: 0,
         ease: uniEase
-      }, "menuClose"); // tl.set([hHam1, hHam2, hHam3], {width:0});
-
+      }, "menuClose");
       return tl;
     };
 
@@ -689,13 +762,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var hHam2 = $(".hovHamMid");
       var hHam3 = $(".hovHamBot");
       var h2 = $('.menuSectionToggle');
+      var header = $('.header');
       var yellowSpans = $('.sub-spans');
       var uniTime = 0.3;
       var uniEase = Back.easeIn.config(0.5);
       var uniEase2 = Back.easeOut.config(0.5);
       $(toggle).addClass("menuOpen");
-      $(".wrapper").disableScroll(); // tl.to($(".wrapper"), {duration:uniTime, ease:uniEase2, height:"100%", overflow:"hidden"}, "menuOpen");
-
+      $(".wrapper").disableScroll();
       tl.to(menu, {
         duration: uniTime,
         x: "50%",
@@ -751,6 +824,187 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, "menuOpen");
       return tl;
     };
+
+    var creativeInfoSetup = function creativeInfoSetup() {
+      var imgBox = $('.mobileImageContainer');
+      var infoBox = $('.mobile-featured-info');
+      var image = $(".mobile-single-creative-image");
+      var hName = $(".mobile-name-hidden");
+      var pName = $(".plainName");
+      var title = $(".mobileFeaturedTitle");
+      var advice = $(".mobile-featured-advice");
+      var link = $(".mobile-website-link");
+      var tl = new gsap.timeline();
+      tl.set(image, {
+        opacity: 0,
+        rotationX: 10
+      });
+      tl.set([title, link], {
+        opacity: 0,
+        rotationX: -30,
+        y: 75
+      });
+      tl.set(advice, {
+        opacity: 0,
+        rotationX: 30,
+        y: 75
+      }); // tl.set(hName, {opacity:0,rotationX:30});
+
+      tl.set(imgBox, {
+        perspective: 1000
+      });
+      tl.set(infoBox, {
+        perspective: 1000
+      });
+    };
+
+    var setupEachCreatives = function setupEachCreatives(thisOne) {
+      // Hide All Info, Fired After Each Is Setup
+      var setHeight = function setHeight() {
+        var allDeets = $('.mobileDetailsContainer');
+        var allImg = $('.mobileImageContainer');
+        gsap.set([allDeets, allImg], {
+          height: 0
+        });
+      };
+
+      $('.single-creative-title').each(function () {
+        var deets = $(this).find('.mobile-featured-creative-text');
+        var deetHeight = $(deets).outerHeight();
+        var img = $(this).find('.mobile-single-creative-image');
+        var imgHeight = $(img).outerHeight();
+        var pName = $(this).find(".plainName");
+        var pNameHeight = $(pName).outerHeight();
+        $(this).attr({
+          'data-deets': deetHeight,
+          'data-img': imgHeight,
+          'data-high': pNameHeight
+        });
+      }).promise().done(setHeight()); // After Each Is Complete Setup the Height at 0
+    };
+
+    var creativeMobileAnimationEnter = function creativeMobileAnimationEnter(thisPerson) {
+      var image = $(thisPerson).find(".mobile-single-creative-image");
+      var hName = $(thisPerson).find(".mobile-name-hidden");
+      var pName = $(thisPerson).find(".plainName");
+      var title = $(thisPerson).find(".mobileFeaturedTitle");
+      var advice = $(thisPerson).find(".mobile-featured-advice");
+      var link = $(thisPerson).find(".mobile-website-link");
+      var deets = $(thisPerson).find('.mobileDetailsContainer');
+      var deetHeightTo = $(thisPerson).attr('data-deets');
+      var img = $(thisPerson).find('.mobileImageContainer');
+      var imgHeightTo = $(thisPerson).attr('data-img');
+      var plainName = $(thisPerson).find('.plainName');
+      var tl = new gsap.timeline({
+        defaults: {
+          ease: "back.out(0.7)",
+          transformOrigin: "100% 100% 0",
+          duration: 0.3,
+          opacity: 1,
+          rotationX: 0,
+          y: 0
+        }
+      });
+      $('html, body').animate({
+        scrollTop: $(thisPerson).offset().top - 100
+      }, 300);
+      tl.to(deets, {
+        height: deetHeightTo
+      }, 'mobilize');
+      tl.to(img, {
+        height: imgHeightTo
+      }, 'mobilize');
+      tl.to(plainName, {
+        height: 0
+      }, 'mobilize'); // tl.to(hName, {}, 'mobilize+=0.2');
+
+      tl.to(title, {}, 'mobilize+=0.2');
+      tl.to(advice, {}, 'mobilize+=0.24');
+      tl.to(link, {}, 'mobilize+=0.28');
+      tl.to(image, {
+        onComplete: function onComplete() {
+          $(thisPerson).addClass('theOpenOne');
+        }
+      }, 'mobilize+=0.22');
+      return tl;
+    };
+
+    var creativeMobileAnimationLeave = function creativeMobileAnimationLeave(thisPerson) {
+      var image = $(thisPerson).find(".mobile-single-creative-image");
+      var hName = $(thisPerson).find(".mobile-name-hidden");
+      var pName = $(thisPerson).find(".plainName");
+      var title = $(thisPerson).find(".mobileFeaturedTitle");
+      var advice = $(thisPerson).find(".mobile-featured-advice");
+      var link = $(thisPerson).find(".mobile-website-link");
+      var deets = $(thisPerson).find('.mobileDetailsContainer');
+      var img = $(thisPerson).find('.mobileImageContainer');
+      var plainName = $(thisPerson).find('.plainName');
+      var thisPname = $(thisPerson).find('.plainName');
+      var pNameHeightTo = $(thisPname).attr('data-high');
+      var tl = new gsap.timeline({
+        defaults: {
+          ease: "back.in(0.6)",
+          transformOrigin: "100% 100% 0",
+          duration: 0.3,
+          opacity: 0
+        }
+      });
+      tl.to([title, link], {
+        rotationX: -30,
+        y: 75,
+        transformOrigin: "0% 100% 0"
+      }, 'mobilize');
+      tl.to(advice, {
+        rotationX: 30,
+        y: 75
+      }, 'mobilize'); // tl.to(hName, {rotationX:30}, 'mobilize');
+
+      tl.to(image, {
+        rotationX: 10
+      }, 'mobilize');
+      tl.to(deets, {
+        height: 0
+      }, 'mobilize+=0.2');
+      tl.to(img, {
+        height: 0
+      }, 'mobilize+=0.2');
+      tl.to(plainName, {
+        height: 'auto'
+      }, 'mobilize+=0.2');
+      tl.to(plainName, {
+        height: pNameHeightTo,
+        opacity: 1,
+        rotationX: 0,
+        y: 0,
+        onComplete: function onComplete() {
+          $(thisPerson).removeClass('theOpenOne');
+        }
+      }, 'mobilize+=0.2');
+      return tl;
+    };
+
+    $(window).on("load", function () {
+      if ($(window).width() <= 1024) {
+        // Set Everything Up
+        creativeInfoSetup();
+        setupEachCreatives();
+        $('.single-creative-title').on('click', function () {
+          // Make sure it's not the nominate link
+          if ($(this).hasClass('nominate-link')) {
+            return false;
+          } else {
+            // don't do anything if it's already open
+            if ($(this).hasClass('theOpenOne')) {
+              creativeMobileAnimationLeave($(this));
+            } else {
+              //Add theOpenOne is done via GSAP call back above / in this function
+              creativeMobileAnimationEnter($(this));
+            }
+          }
+        }); //On Click
+      } //1024 Size Check
+
+    }); //Window Load Check
 
     var closeNom = function closeNom() {
       var tl = new gsap.timeline({});
@@ -834,139 +1088,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       return tl;
     };
 
-    var newHover = function newHover() {
-      $(".single-creative-title").each(function (i, el) {
-        // Add Various Timelines from other js files | Use el for this
-        var masterTL = new gsap.timeline({
-          paused: true
-        });
-        var t = masterTL;
-        masterTL.add(loadImage(el), 'getcreative+=0.1');
-        masterTL.add(loadDetails(el), 'getcreative+=0.1');
-        masterTL.add(funcHover(el), 'getcreative'); // Create A Variable for each timeline
-
-        el.animation = t; // Control The Specific Timeline for Each Hovered Element
-
-        $(this).on("mouseenter", function () {
-          if ($('.menuToggle').hasClass("menuOpen")) {
-            $('.single-creative-title').find('a').hide();
-            return false;
-          } else {
-            this.animation.play();
-          }
-        }).on("mouseleave", function () {
-          if ($('.menuToggle').hasClass("menuOpen")) {
-            $('.single-creative-title').find('a').show();
-            return false;
-          } else {
-            this.animation.reverse();
-          }
-        }).on("click", function () {
-          this.animation.reverse();
-        });
-      });
-    };
-
     $(function preLoaderOn() {
       $(window).load(function () {
         $('#preloader').fadeOut('slow', function () {
           $(this).remove();
         });
       });
-    });
-
-    var funcHover = function funcHover(thisOne) {
-      var pChars = $(thisOne).find('.pChars');
-      var hChars = $(thisOne).find('.hChars');
-      var arrow = $(thisOne).find('.websiteArrow');
-      var tl = new gsap.timeline({});
-      var uTime = 0.2;
-      tl.to(pChars, {
-        duration: uTime,
-        ease: "back.out(0.1)",
-        transformOrigin: "50% 50% -30",
-        opacity: 0,
-        scale: 0,
-        x: -10,
-        y: 0,
-        rotationY: -40,
-        rotationX: -120,
-        stagger: {
-          amount: uTime // ease:"back.out(0.1)",
-          // ease: "power2.inOut"
-
-        }
-      }, "rollIt").to(hChars, {
-        duration: uTime,
-        ease: "back.out(0.1)",
-        opacity: 1,
-        x: 55,
-        y: 0,
-        rotationY: 0,
-        rotationX: 0,
-        stagger: {
-          amount: uTime // ease:"back.out(0.1)",
-          // ease: "power2.inOut"
-
-        }
-      }, "rollIt").to(arrow, {
-        duration: uTime,
-        transformOrigin: "0% 100%",
-        ease: "back.out(0.1)",
-        opacity: 1,
-        x: 55,
-        y: 0,
-        rotation: 0
-      }, "-=0.1");
-      return tl;
-    };
-
-    var creativeTitleSplit = function creativeTitleSplit() {
-      var pSplit = new SplitText($('.plainName'), {
-        type: "words,chars"
-      });
-      var hSplit = new SplitText($('.hoveredName'), {
-        type: "words,chars"
-      });
-      var pWords = pSplit.words;
-      var hWords = hSplit.words;
-      var pChars = pSplit.chars;
-      var hChars = hSplit.chars;
-      $(hWords).addClass('hWords');
-      $(pWords).addClass('pWords');
-      $(hChars).addClass('hChars');
-      $(pChars).addClass('pChars');
-      gsap.set(pWords, {
-        perspective: 100
-      });
-      gsap.set(hWords, {
-        perspective: 100
-      });
-      gsap.set(hChars, {
-        opacity: 0,
-        x: -10,
-        y: 10,
-        rotationY: 0,
-        rotationX: 0,
-        // Once this is all setup enable the hover aniamtion in person-hover.js
-        onComplete: function onComplete() {
-          newHover();
-        }
-      });
-      gsap.set($(".websiteArrow"), {
-        opacity: 0,
-        x: 40,
-        y: 0,
-        rotation: -5
-      });
-    };
-
-    creativeTitleSplit(); // Reset Text On Window Resize
-
-    window.addEventListener('resize', function () {
-      new SplitText($('.plainName')).revert();
-      new SplitText($('.hoveredName')).revert();
-      newHover();
     });
   });
 })(jQuery, this);

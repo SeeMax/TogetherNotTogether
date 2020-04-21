@@ -36,9 +36,3 @@ const splitHero = () => {
   gsap.set(hChars, {x:0,y:0,scale:1, onComplete: function() {heroFlyout()}});
 }
 splitHero();
-
-// // Reset Text On Window Resize
-// window.addEventListener('resize', function(){
-//   new SplitText($('.heroHeadline')).revert();
-//   new SplitText($('.heroBody')).revert();
-// });

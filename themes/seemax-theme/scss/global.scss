@@ -169,9 +169,24 @@ hr {
 	}
 }
 
+.mobile-only {
+	display: none;
+}
+
 
 // 1024px And Below
 @media screen and (max-width: 1024px){
+	.desktop-only {
+		display: none !important;
+	}
+
+	.website-plus-2 {
+		display: none !important;
+	}
+
+	.mobile-only {
+		display: block;
+	}
 
 	h1 {
 

@@ -38,6 +38,17 @@
 	}
 }
 
+.header-back {
+	position: fixed;
+	height:100px;
+	width:100%;
+	top:0;
+	left:0;
+	font-family: 'Argesta', sans-serif;
+	background:white;
+	z-index:99;
+}
+
 .mobile-menu {
 	cursor: pointer;
 	display: block;
@@ -159,33 +170,18 @@
 
 	.header {
 
-	}
+		.mobile-menu {
 
-	.header-logo {
+			&:hover {
 
-	}
-
-	.mobile-menu {
-
-	}
-
-	.main-nav {
-
-		ul {
-		}
-
-		li {
-
-		}
-	}
-
-	.mobile-sub-close {
-
-		img {
-
+				.yellow-span {
+					width:0px;
+				}
+			}
 		}
 	}
 }
+
 
 
 // 767px And Below
@@ -193,14 +189,5 @@
 
 	.header {
 
-		.custom-sub-menu {
-
-			ul {
-
-				li {
-					font-size:1.1em;
-				}
-			}
-		}
 	}
 }

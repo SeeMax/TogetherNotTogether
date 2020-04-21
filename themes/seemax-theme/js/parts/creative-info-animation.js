@@ -9,7 +9,11 @@ const setDetails = () => {
   });
   gsap.set([name,title,advice], {opacity:0, rotationX:-5});
 }
-setDetails();
+
+// Only Load on Desktop
+if($(window).width() >= 1024) {
+  setDetails();
+}
 
 
 let loadDetails = (thisCreativeDeets) => {
@@ -24,10 +28,7 @@ let loadDetails = (thisCreativeDeets) => {
       ease:"back.in(0.1)",
       transformOrigin:"50% 100% 0",
       duration:0.3,
-      scale:1,
       opacity:1,
-      x:0,
-      y:0,
       rotationX:0,
     }
   });

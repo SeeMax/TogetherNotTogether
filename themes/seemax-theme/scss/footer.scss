@@ -79,22 +79,14 @@
 @media screen and (max-width: 767px){
 
 	.footer {
-		padding-bottom:0px;
 
 		.content {
-			padding:0px 25px 26px 25px;;
+
 		}
 
 		.footer-tile {
-			border-bottom:1px solid blue;
-			display: flex;
-			flex-wrap:wrap;
-			height:auto;
-			padding:20px 0px;
-
-			.container-ul {
-				padding:20px 0px;
-			}
+			justify-content: space-between;
+			text-align: left;
 		}
 	}
 }

@@ -69,4 +69,8 @@ const aboutSplitSetup = () => {
     aboutSplit();
   });
 }
-aboutSplitSetup();
+
+// Only do the hover stuff if it's desk top
+if($(window).width() >= 1024) {
+  aboutSplitSetup();
+}

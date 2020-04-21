@@ -5,7 +5,7 @@
 ?>
 
 <!-- A list of the creatives pictures -->
-<div class="creative-images-area">
+<div class="creative-images-area desktop-only">
   <?php while ( $loop->have_posts() ) : $loop->the_post();?>
     <?php $image = get_field('image');?>
     <img class="single-creative-image" data-post="<?php echo $post->ID;?>" src="<?php echo $image['url'];?>" />
@@ -13,7 +13,7 @@
 </div>
 
 <!-- All The Details About Each Person -->
-<div class="creative-details-area">
+<div class="creative-details-area desktop-only">
   <?php while ( $loop->have_posts() ) : $loop->the_post();?>
     <?php
       $name = get_the_title();
@@ -40,10 +40,37 @@
 <div class="creative-list-area">
   <div class="creatives-list">
     <?php while ( $loop->have_posts() ) : $loop->the_post();?>
-      <?php $website = get_field('website');?>
+      <?php
+        $image = get_field('image');
+        $name = get_the_title();
+        $title = get_field('title');
+        $advice = get_field('advice');
+        $adviceLead = get_field('advice_lead');
+        $website = get_field('website');
+      ?>
       <div class="single-creative-title singleCreativeTitle" data-post="<?php echo $post->ID;?>">
+        <div class="mobile-only mobile-single-creative-image-container mobileImageContainer">
+          <img class="mobile-single-creative-image" data-post="<?php echo $post->ID;?>" src="<?php echo $image['url'];?>" />
+          <h2 class="mobile-name-hidden"><?php the_title();?></h2>
+        </div>
         <h2 class="plain-name plainName"><?php the_title();?></h2>
         <h2 class="hovered-name hoveredName"><?php the_title();?></h2>
+        <div class="mobile-only mobile-single-creative-details mobileDetailsContainer" data-post="<?php echo $post->ID;?>">
+          <div class="mobile-featured-creative-text">
+            <!-- <h2 class="mobile-name"><?php the_title();?></h2> -->
+            <div class="mobile-featured-info">
+              <h3 class="mobile-featured-title mobileFeaturedTitle"><?php echo $title;?></h3>
+              <div class="mobile-featured-advice mobielFeaturedAdvice">
+                <span class="advice-lead"><?php echo $adviceLead;?>:</span>
+                <span class="advice-quote">"</span><?php echo $advice;?>
+                <span class="advice-quote advice-quote-2">"</span>
+              </div>
+              <a class="mobile-website-link" href="<?php echo $website;?>" target="_blank">
+                Website
+              </a>
+            </div>
+          </div>
+        </div>
         <div class="website-arrow websiteArrow">
           <?php get_template_part( 'partials/_website-arrow' ); ?>
         </div>

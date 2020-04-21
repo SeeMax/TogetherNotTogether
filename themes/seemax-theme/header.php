@@ -54,6 +54,7 @@
 			<polyline id="mid-load" class="preloader-logo-color-3" points="250.4,67.3 134.1,134.1 17.8,200.9"/>
 		</svg>
 	</div>
+	<div class="header-back"></div>
 	<header class="header" role="banner">
 		<div class="content header-inner-wrap">
 			<div class="header-logo">

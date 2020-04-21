@@ -1,4 +1,4 @@
-let funcHover = (thisOne) => {
+let loadLetters = (thisOne) => {
 
   let pChars = $(thisOne).find('.pChars');
   let hChars = $(thisOne).find('.hChars');
