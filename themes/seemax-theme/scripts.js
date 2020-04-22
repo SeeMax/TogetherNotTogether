@@ -422,8 +422,8 @@
         defaults: {
           // ease: 'power0.none',
           // ease: Back.easeOut.config(0.2),
-          ease: 'power4.out',
-          duration: 0.9
+          ease: 'back.out(1)',
+          duration: 1.1
         }
       });
       $(headChars).each(function (i) {
@@ -496,7 +496,7 @@
       var visiblity = 'invisible';
       var options = {
         root: null,
-        rootMargin: '-100px',
+        rootMargin: '-150px',
         threshold: 0
       };
 
@@ -837,7 +837,7 @@
       var tl = new gsap.timeline();
       tl.set(image, {
         opacity: 0,
-        rotationX: 10
+        rotationX: 20
       });
       tl.set([title, link], {
         opacity: 0,
@@ -918,14 +918,14 @@
         height: 0
       }, 'mobilize'); // tl.to(hName, {}, 'mobilize+=0.2');
 
-      tl.to(title, {}, 'mobilize+=0.2');
-      tl.to(advice, {}, 'mobilize+=0.24');
-      tl.to(link, {}, 'mobilize+=0.28');
+      tl.to(title, {}, 'mobilize+=0.26');
+      tl.to(advice, {}, 'mobilize+=0.3');
+      tl.to(link, {}, 'mobilize+=0.3');
       tl.to(image, {
         onComplete: function onComplete() {
           $(thisPerson).addClass('theOpenOne');
         }
-      }, 'mobilize+=0.22');
+      }, 'mobilize+=0.25');
       return tl;
     };
 
@@ -960,7 +960,7 @@
       }, 'mobilize'); // tl.to(hName, {rotationX:30}, 'mobilize');
 
       tl.to(image, {
-        rotationX: 10
+        rotationX: 20
       }, 'mobilize');
       tl.to(deets, {
         height: 0

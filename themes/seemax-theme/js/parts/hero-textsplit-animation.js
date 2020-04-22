@@ -17,8 +17,8 @@ const heroFlyout = () => {
     defaults:{
       // ease: 'power0.none',
       // ease: Back.easeOut.config(0.2),
-      ease: 'power4.out',
-      duration:0.9,
+      ease: 'back.out(1)',
+      duration:1.1,
     }
   });
 
@@ -60,7 +60,7 @@ const heroFlyout = () => {
 
   let options = {
     root: null,
-    rootMargin: '-100px',
+    rootMargin: '-150px',
     threshold: 0
   }
 

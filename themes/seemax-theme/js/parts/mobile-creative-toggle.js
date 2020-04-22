@@ -9,7 +9,7 @@ const creativeInfoSetup = () => {
   let link = $(".mobile-website-link");
   let tl = new gsap.timeline();
 
-  tl.set(image, {opacity:0,rotationX:10});
+  tl.set(image, {opacity:0,rotationX:20});
   tl.set([title,link], {opacity:0,rotationX:-30,y:75});
   tl.set(advice, {opacity:0,rotationX:30,y:75});
   // tl.set(hName, {opacity:0,rotationX:30});
@@ -72,12 +72,12 @@ const creativeMobileAnimationEnter = (thisPerson) => {
     tl.to(img, {height:imgHeightTo}, 'mobilize');
     tl.to(plainName, {height:0}, 'mobilize');
     // tl.to(hName, {}, 'mobilize+=0.2');
-    tl.to(title, {}, 'mobilize+=0.2');
-    tl.to(advice, {}, 'mobilize+=0.24');
-    tl.to(link, {}, 'mobilize+=0.28');
+    tl.to(title, {}, 'mobilize+=0.26');
+    tl.to(advice, {}, 'mobilize+=0.3');
+    tl.to(link, {}, 'mobilize+=0.3');
     tl.to(image, {onComplete:function() {
       $(thisPerson).addClass('theOpenOne')}
-    }, 'mobilize+=0.22');
+    }, 'mobilize+=0.25');
     return tl;
 }
 
@@ -106,7 +106,7 @@ const creativeMobileAnimationLeave = (thisPerson) => {
   tl.to([title,link], {rotationX:-30,y:75,transformOrigin:"0% 100% 0"}, 'mobilize');
   tl.to(advice, {rotationX:30,y:75}, 'mobilize');
   // tl.to(hName, {rotationX:30}, 'mobilize');
-  tl.to(image, {rotationX:10}, 'mobilize');
+  tl.to(image, {rotationX:20}, 'mobilize');
   tl.to(deets, {height:0}, 'mobilize+=0.2');
   tl.to(img, {height:0}, 'mobilize+=0.2');
   tl.to(plainName, {height:'auto'}, 'mobilize+=0.2');
