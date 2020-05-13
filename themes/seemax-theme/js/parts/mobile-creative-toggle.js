@@ -65,7 +65,7 @@ const creativeMobileAnimationEnter = (thisPerson) => {
     });
 
     $('html, body').animate({
-      scrollTop: $(thisPerson).offset().top - 100
+      scrollTop: $(thisPerson).offset().top - 60
     },300);
 
     tl.to(deets, {height:deetHeightTo}, 'mobilize');
